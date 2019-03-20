@@ -24,10 +24,25 @@ describe('LinkedList', function () {
     });
 
     describe('remove', function () {
-      it('should something', function () {
-        // add stuff
-        // expect list size to decrement
-        // expect list to NOT contain data
+      it('returns false if list is empty', function () {
+        expect(list.remove("test")).toEqual(false);
+      });
+      it('returns false if value is not in list', function () {
+        let data = "Aiden";
+        list.insert(data);
+        expect(list.remove("test")).toEqual(false);
+      });
+      it('returns true if value is in list', function () {
+        let data = "Aiden";
+        list.insert(data);
+        expect(list.remove(data)).toEqual(true);
+        expect(list.size()).toEqual(0);
+
+        list.insert(data);
+        let data2 = "Luke";
+        list.insert(data2);
+        expect(list.remove(data)).toEqual(true);
+        expect(list.size()).toEqual(1);
       });
     });
 
